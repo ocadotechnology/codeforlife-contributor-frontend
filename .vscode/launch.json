@@ -18,6 +18,9 @@
       "type": "node"
     },
     {
+      "env": {
+        "SERVICE_NAME": "contributor"
+      },
       "name": "Vite Server",
       "preLaunchTask": "run",
       "request": "launch",
