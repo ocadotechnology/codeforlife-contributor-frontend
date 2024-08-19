@@ -19,7 +19,7 @@
     },
     {
       "env": {
-        "SERVICE_NAME": "contributor"
+        "VITE_SERVICE_NAME": "contributor"
       },
       "name": "Vite Server",
       "preLaunchTask": "run",
