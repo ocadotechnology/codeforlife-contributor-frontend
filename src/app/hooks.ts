@@ -7,7 +7,20 @@
 import { useDispatch, useSelector } from "react-redux"
 
 import type { AppDispatch, RootState } from "./store"
+import Cookies from "js-cookie"
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
 export const useAppSelector = useSelector.withTypes<RootState>()
+
+export interface SessionMetadata {
+  contributor_id: number
+}
+
+export function useSessionMetadata(): SessionMetadata | undefined {
+  const sessionMetadata = Cookies.get("session_metadata")
+
+  return sessionMetadata
+    ? (JSON.parse(sessionMetadata) as SessionMetadata)
+    : undefined
+}
