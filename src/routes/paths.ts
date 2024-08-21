@@ -4,6 +4,9 @@ const paths = _("", {
   fruits: _("/fruits", {
     id: _("/:id"),
   }),
+  contributors: _("/contributors", {
+    id: _("/id"),
+  }),
 })
 
 export default paths
