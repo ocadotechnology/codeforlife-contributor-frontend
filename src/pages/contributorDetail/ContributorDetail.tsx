@@ -24,7 +24,7 @@ const ContributorDetail: FC<ContributorDetailProps> = () => {
       handleQueryState(retrieveContributorResult, contributor => (
         <pages.Page>
           <pages.Section>
-            <Typography variant="h1">Update fruit</Typography>
+            <Typography variant="h1">Contributor details</Typography>
             <forms.Form
               initialValues={contributor}
               onSubmit={alert}

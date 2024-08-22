@@ -13,7 +13,7 @@ const ContributorList: FC<ContributorListProps> = () => {
   return (
     <pages.Page>
       <pages.Section>
-        <Typography fontWeight="bold">Hello</Typography>
+        <Typography variant="h1">Contributors List</Typography>
         <TablePagination
           useLazyListQuery={useLazyListContributorsQuery}
           preferCacheValue
