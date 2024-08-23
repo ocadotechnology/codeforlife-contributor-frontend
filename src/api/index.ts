@@ -1,7 +1,7 @@
 import { createApi } from "codeforlife/api"
 
 const api = createApi({
-  tagTypes: ["Contributor"],
+  tagTypes: ["Contributor", "AgreementSignature"],
 })
 
 export default api

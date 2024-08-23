@@ -19,7 +19,9 @@ const Home: FC<HomeProps> = () => {
           This is an example of how you can create a web page. This example
           consumes the backend-template&apos;s API.
         </Typography>
-        <Link to={paths.contributors._}>Contributor list</Link>
+        <Link to={paths.contributors._}>Contributors list </Link>
+        <br></br>
+        <Link to={paths.agreementSignatures._}> Agreement signatures list</Link>
       </pages.Section>
     </pages.Page>
   )
