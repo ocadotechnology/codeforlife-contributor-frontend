@@ -1,4 +1,6 @@
 import {
+  type CreateArg,
+  type CreateResult,
   type ListArg,
   type ListResult,
   type Model,
@@ -37,6 +39,15 @@ export type ListAgreementSignaturesResult = ListResult<
 >
 export type ListAgreementSignaturesArg = ListArg
 
+export type CreateAgreementSignatureResult = CreateResult<
+  AgreementSignature,
+  "contributor" | "agreement_id" | "signed_at"
+>
+export type CreateAgreementSignatureArg = CreateArg<
+  AgreementSignature,
+  "contributor" | "agreement_id" | "signed_at"
+>
+
 const agreementSignatureApi = api.injectEndpoints({
   endpoints: build => ({
     retrieveAgreementSignature: build.query<
@@ -59,6 +70,17 @@ const agreementSignatureApi = api.injectEndpoints({
       }),
       providesTags: tagData("AgreementSignature", { includeListTag: true }),
     }),
+    createAgreementSignature: build.mutation<
+      CreateAgreementSignatureResult,
+      CreateAgreementSignatureArg
+    >({
+      query: body => ({
+        url: agreementSignatureUrls.list,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: tagData("AgreementSignature", { includeListTag: true }),
+    }),
   }),
 })
 
@@ -68,4 +90,5 @@ export const {
   useLazyRetrieveAgreementSignatureQuery,
   useListAgreementSignaturesQuery,
   useLazyListAgreementSignaturesQuery,
+  useCreateAgreementSignatureMutation,
 } = agreementSignatureApi
