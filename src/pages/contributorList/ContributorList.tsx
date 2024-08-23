@@ -26,13 +26,11 @@ const ContributorList: FC<ContributorListProps> = () => {
                   {contributor.name} ({contributor.email})
                 </Typography>
 
-                {/* Added an icon to the LinkIconButton for better UX */}
                 <LinkIconButton
                   to={generatePath(paths.contributors.id._, {
                     id: contributor.id,
                   })}
                 >
-                  {/* You can replace 'View' with an icon component like <Icon>eye</Icon> if desired */}
                   <Typography>View</Typography>
                 </LinkIconButton>
               </Stack>

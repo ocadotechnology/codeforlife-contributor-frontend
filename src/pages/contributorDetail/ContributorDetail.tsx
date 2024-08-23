@@ -1,7 +1,6 @@
-import * as forms from "codeforlife/components/form"
 import * as pages from "codeforlife/components/page"
 import * as yup from "yup"
-import { Typography } from "@mui/material"
+import { Stack, Typography } from "@mui/material"
 // eslint-disable-next-line sort-imports
 import { type FC } from "react"
 import { Link } from "codeforlife/components/router"
@@ -24,11 +23,22 @@ const ContributorDetail: FC<ContributorDetailProps> = () => {
       handleQueryState(retrieveContributorResult, contributor => (
         <pages.Page>
           <pages.Section>
-            <Typography variant="h1">Contributor details</Typography>
-            <forms.Form
-              initialValues={contributor}
-              onSubmit={alert}
-            ></forms.Form>
+            <Typography variant="h1">{contributor.name} details</Typography>
+            <Stack spacing={2}>
+              <Typography variant="h6">Name: {contributor.name}</Typography>
+              <Typography variant="h6">Email: {contributor.email}</Typography>
+              {contributor.location && (
+                <Typography variant="h6">
+                  Location: {contributor.location}
+                </Typography>
+              )}
+              <Typography variant="h6">
+                html_url: {contributor.html_url}
+              </Typography>
+              <Typography variant="h6">
+                avatar_url: {contributor.avatar_url}
+              </Typography>
+            </Stack>
           </pages.Section>
           <pages.Section>
             <Link className="back-to" to={paths.contributors._}>

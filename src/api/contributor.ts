@@ -16,10 +16,10 @@ export type Contributor = Model<
   {
     email: string
     name: string
-    location: string
+    location?: string
     html_url: string
     avatar_url: string
-    last_login: Date
+    last_login?: Date
   }
 >
 
