@@ -11,6 +11,7 @@ import {
   tagData,
 } from "codeforlife/utils/api"
 
+import { type Contributor } from "./contributor"
 import api from "."
 
 export type AgreementSignature = Model<
@@ -48,6 +49,11 @@ export type CreateAgreementSignatureArg = CreateArg<
   "contributor" | "agreement_id" | "signed_at"
 >
 
+export type CheckSignedAgreementSignatureResult =
+  | { latest_commit_id: string; status: 404 | 451 }
+  | { status: 200 }
+export type CheckSignedAgreementSignatureArg = Pick<Contributor, "id">
+
 const agreementSignatureApi = api.injectEndpoints({
   endpoints: build => ({
     retrieveAgreementSignature: build.query<
@@ -81,6 +87,16 @@ const agreementSignatureApi = api.injectEndpoints({
       }),
       invalidatesTags: tagData("AgreementSignature", { includeListTag: true }),
     }),
+    checkSignedAgreementSignature: build.mutation<
+      CheckSignedAgreementSignatureResult,
+      CheckSignedAgreementSignatureArg
+    >({
+      query: ({ id, ...body }) => ({
+        url: buildUrl(agreementSignatureUrls.detail, { url: { id } }),
+        method: "PUT",
+        body,
+      }),
+    }),
   }),
 })
 
@@ -91,4 +107,5 @@ export const {
   useListAgreementSignaturesQuery,
   useLazyListAgreementSignaturesQuery,
   useCreateAgreementSignatureMutation,
+  useCheckSignedAgreementSignatureMutation,
 } = agreementSignatureApi
