@@ -1,6 +1,5 @@
 import fruit from "./fruit"
 import general from "./general"
-import paths from "./paths"
 
 const routes = (
   <>
@@ -10,4 +9,4 @@ const routes = (
 )
 
 export default routes
-export { paths }
+export { default as paths } from "./paths"
