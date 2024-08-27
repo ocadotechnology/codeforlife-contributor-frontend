@@ -11,7 +11,6 @@ import {
   tagData,
 } from "codeforlife/utils/api"
 
-import { type Contributor } from "./contributor"
 import api from "."
 
 export type AgreementSignature = Model<
@@ -52,7 +51,7 @@ export type CreateAgreementSignatureArg = CreateArg<
 export type CheckSignedAgreementSignatureResult =
   | { latest_commit_id: string; status: 404 | 451 }
   | { status: 200 }
-export type CheckSignedAgreementSignatureArg = Pick<Contributor, "id">
+export type CheckSignedAgreementSignatureArg = { contributor_id: number }
 
 const agreementSignatureApi = api.injectEndpoints({
   endpoints: build => ({
@@ -91,10 +90,11 @@ const agreementSignatureApi = api.injectEndpoints({
       CheckSignedAgreementSignatureResult,
       CheckSignedAgreementSignatureArg
     >({
-      query: ({ id, ...body }) => ({
-        url: buildUrl(agreementSignatureUrls.detail, { url: { id } }),
-        method: "PUT",
-        body,
+      query: ({ contributor_id }) => ({
+        url: buildUrl(agreementSignatureUrls.detail + "check-signed/", {
+          url: { contributor_id },
+        }),
+        method: "GET",
       }),
     }),
   }),
