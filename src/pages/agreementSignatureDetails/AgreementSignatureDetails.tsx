@@ -42,7 +42,7 @@ const AgreementSignatureDetail: FC<AgreementSignatureDetailProps> = () => {
                 Agreement ID: {agreementSignature.agreement_id}
               </Typography>
               <Typography variant="h6">
-                signed at: {agreementSignature.signed_at}
+                signed at: {agreementSignature.signed_at.toString()}
               </Typography>
             </Stack>
           </pages.Section>
