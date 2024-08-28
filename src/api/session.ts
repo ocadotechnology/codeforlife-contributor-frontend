@@ -1,6 +1,5 @@
 import { type SessionMetadata } from "../app/hooks"
 
-const baseUrl = "session/"
 export type LoginWithGithubResult = SessionMetadata
 export type LoginWithGithubArg = { code: string }
 
@@ -10,7 +9,7 @@ const sessionApi = api.injectEndpoints({
   endpoints: build => ({
     loginWithGithub: build.mutation<LoginWithGithubResult, LoginWithGithubArg>({
       query: body => ({
-        url: baseUrl + "login-into-github/",
+        url: "session/login/",
         method: "POST",
         body,
       }),
