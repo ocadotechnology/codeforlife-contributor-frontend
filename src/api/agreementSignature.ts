@@ -18,7 +18,7 @@ export type AgreementSignature = Model<
   {
     contributor: number
     agreement_id: string
-    signed_at: string
+    signed_at: Date
   }
 >
 
@@ -51,7 +51,7 @@ export type CreateAgreementSignatureArg = CreateArg<
 export type CheckSignedAgreementSignatureResult =
   | { latest_commit_id: string; status: 404 | 451 }
   | { status: 200 }
-export type CheckSignedAgreementSignatureArg = { contributor_id: number }
+export type CheckSignedAgreementSignatureArg = { contributor_pk: number }
 
 const agreementSignatureApi = api.injectEndpoints({
   endpoints: build => ({
@@ -86,14 +86,17 @@ const agreementSignatureApi = api.injectEndpoints({
       }),
       invalidatesTags: tagData("AgreementSignature", { includeListTag: true }),
     }),
-    checkSignedAgreementSignature: build.mutation<
+    checkSignedAgreementSignature: build.query<
       CheckSignedAgreementSignatureResult,
       CheckSignedAgreementSignatureArg
     >({
-      query: ({ contributor_id }) => ({
-        url: buildUrl(agreementSignatureUrls.detail + "check-signed/", {
-          url: { contributor_id },
-        }),
+      query: ({ contributor_pk }) => ({
+        url: buildUrl(
+          agreementSignatureUrls.list + `check-signed/${contributor_pk}`,
+          {
+            url: { contributor_pk },
+          },
+        ),
         method: "GET",
       }),
     }),
@@ -107,5 +110,5 @@ export const {
   useListAgreementSignaturesQuery,
   useLazyListAgreementSignaturesQuery,
   useCreateAgreementSignatureMutation,
-  useCheckSignedAgreementSignatureMutation,
+  useCheckSignedAgreementSignatureQuery,
 } = agreementSignatureApi

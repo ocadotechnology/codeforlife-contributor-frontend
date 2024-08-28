@@ -10,7 +10,7 @@ const sessionApi = api.injectEndpoints({
   endpoints: build => ({
     loginWithGithub: build.mutation<LoginWithGithubResult, LoginWithGithubArg>({
       query: body => ({
-        url: baseUrl + "login-with-github/",
+        url: baseUrl + "login-into-github/",
         method: "POST",
         body,
       }),
