@@ -7,6 +7,7 @@ const paths = _("", {
   agreementSignatures: _("/agreement-signatures", {
     id: _("/:id"),
   }),
+  login: _("/login"),
 })
 
 export default paths

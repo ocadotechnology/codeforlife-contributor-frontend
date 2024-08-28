@@ -1,13 +1,13 @@
 import { type SessionMetadata } from "../app/hooks"
 
-export type LoginWithGithubResult = SessionMetadata
-export type LoginWithGithubArg = { code: string }
+export type LoginWithGitHubResult = SessionMetadata
+export type LoginWithGitHubArg = { code: string }
 
 import api from "."
 
 const sessionApi = api.injectEndpoints({
   endpoints: build => ({
-    loginWithGithub: build.mutation<LoginWithGithubResult, LoginWithGithubArg>({
+    loginWithGitHub: build.mutation<LoginWithGitHubResult, LoginWithGitHubArg>({
       query: body => ({
         url: "session/login/",
         method: "POST",
@@ -17,5 +17,5 @@ const sessionApi = api.injectEndpoints({
   }),
 })
 
-export const { useLoginWithGithubMutation } = sessionApi
 export default sessionApi
+export const { useLoginWithGitHubMutation } = sessionApi

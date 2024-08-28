@@ -22,6 +22,8 @@ const Home: FC<HomeProps> = () => {
         <Link to={paths.contributors._}>Contributors list </Link>
         <br></br>
         <Link to={paths.agreementSignatures._}> Agreement signatures list</Link>
+        <br></br>
+        <Link to={paths.login._}> Login with github</Link>
       </pages.Section>
     </pages.Page>
   )
