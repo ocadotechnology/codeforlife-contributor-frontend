@@ -1,4 +1,5 @@
 import { type FC } from "react"
+import { GH_CLIENT_ID } from "../app/env"
 import GitHubMarkWhiteImage from "../images/github-mark-white.png"
 import { LinkButton } from "codeforlife/components/router"
 
@@ -7,7 +8,7 @@ export interface GitHubLoginButtonProps {}
 const GitHubLoginButton: FC<GitHubLoginButtonProps> = () => {
   return (
     <LinkButton
-      to="https://github.com/login/oauth/authorize?client_id=Ov23liBErSabQFqROeMg"
+      to={`https://github.com/login/oauth/authorize?client_id=${GH_CLIENT_ID}`}
       target="_blank"
       style={{
         marginTop: "200px",
