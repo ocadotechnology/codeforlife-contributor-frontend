@@ -1,7 +1,6 @@
 import agreementSignature from "./agreementSignature"
 import contributor from "./contributor"
 import general from "./general"
-import paths from "./paths"
 
 const routes = (
   <>
@@ -12,4 +11,4 @@ const routes = (
 )
 
 export default routes
-export { paths }
+export { default as paths } from "./paths"
