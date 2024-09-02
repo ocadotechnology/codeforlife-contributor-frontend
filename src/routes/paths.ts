@@ -1,7 +1,10 @@
 import { path as _ } from "codeforlife/utils/router"
 
 const paths = _("", {
-  fruits: _("/fruits", {
+  contributors: _("/contributors", {
+    id: _("/:id"),
+  }),
+  agreementSignatures: _("/agreement-signatures", {
     id: _("/:id"),
   }),
 })

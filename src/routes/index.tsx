@@ -1,10 +1,10 @@
-import fruit from "./fruit"
+import agreementSignature from "./agreementSignature"
 import general from "./general"
 
 const routes = (
   <>
     {general}
-    {fruit}
+    {agreementSignature}
   </>
 )
 
