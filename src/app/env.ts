@@ -2,4 +2,5 @@ import env from "codeforlife/env"
 
 export * from "codeforlife/env"
 
-export const GH_CLIENT_ID = env.GITHUB_CLIENT_ID ?? "REPLACE_ME"
+export const LINK_GH_LOGIN = env.VITE_LINK_GH_LOGIN
+export const LINK_GH_CONTRIBUTING = env.VITE_LINK_GH_CONTRIBUTING

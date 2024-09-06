@@ -1,55 +1,32 @@
 import * as pages from "codeforlife/components/page"
-import { Stack, Typography } from "@mui/material"
 import { type FC } from "react"
-import { LinkIconButton } from "codeforlife/components/router"
-import { TablePagination } from "codeforlife/components"
-import { generatePath } from "react-router"
-import { paths } from "../../routes"
-import { useLazyListAgreementSignaturesQuery } from "../../api/agreementSignature"
+
+import AgreementSignatureTable from "./AgreementSignatureTable"
+import SignLatestAgreementForm from "./SignLatestAgreementForm"
+import { useSession } from "../../app/hooks"
 
 export interface AgreementSignatureListProps {}
 
 const AgreementSignatureList: FC<AgreementSignatureListProps> = () => {
-  return (
+  const signedLatestAgreement = false // TODO: call endpoint
+  const latestAgreementId = "" // TODO: call endpoint
+
+  return useSession(({ contributor_id }) => (
     <pages.Page>
+      <pages.Banner header="Agreement Signatures" />
+      {!signedLatestAgreement && (
+        <pages.Section>
+          <SignLatestAgreementForm
+            contributor={contributor_id}
+            agreementId={latestAgreementId}
+          />
+        </pages.Section>
+      )}
       <pages.Section>
-        <Typography variant="h1">Agreement Signature List</Typography>
-        <TablePagination
-          useLazyListQuery={useLazyListAgreementSignaturesQuery}
-          preferCacheValue
-        >
-          {agreementSignatures => (
-            <>
-              <Stack direction="row" gap={5}>
-                <Typography fontWeight="bold">ID</Typography>
-                <Typography fontWeight="bold">
-                  Contributor (Agreement ID)
-                </Typography>
-              </Stack>
-              {agreementSignatures.map(agreementSignature => (
-                <Stack direction="row" key={agreementSignature.id} gap={5}>
-                  <Typography fontWeight="bold">
-                    {agreementSignature.id}
-                  </Typography>
-                  <Typography>
-                    {agreementSignature.contributor} (
-                    {agreementSignature.agreement_id})
-                  </Typography>
-                  <LinkIconButton
-                    to={generatePath(paths.agreementSignatures.id._, {
-                      id: agreementSignature.id,
-                    })}
-                  >
-                    <Typography>View</Typography>
-                  </LinkIconButton>
-                </Stack>
-              ))}
-            </>
-          )}
-        </TablePagination>
+        <AgreementSignatureTable />
       </pages.Section>
     </pages.Page>
-  )
+  ))
 }
 
 export default AgreementSignatureList
