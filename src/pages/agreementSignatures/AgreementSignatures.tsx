@@ -5,9 +5,9 @@ import AgreementSignatureTable from "./AgreementSignatureTable"
 import SignLatestAgreementForm from "./SignLatestAgreementForm"
 import { useSession } from "../../app/hooks"
 
-export interface AgreementSignatureListProps {}
+export interface AgreementSignaturesProps {}
 
-const AgreementSignatureList: FC<AgreementSignatureListProps> = () => {
+const AgreementSignatures: FC<AgreementSignaturesProps> = () => {
   const signedLatestAgreement = false // TODO: call endpoint
   const latestAgreementId = "" // TODO: call endpoint
 
@@ -29,4 +29,4 @@ const AgreementSignatureList: FC<AgreementSignatureListProps> = () => {
   ))
 }
 
-export default AgreementSignatureList
+export default AgreementSignatures
