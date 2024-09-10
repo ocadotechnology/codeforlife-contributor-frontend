@@ -2,11 +2,14 @@ import * as pages from "codeforlife/components/page"
 import * as yup from "yup"
 import { type FC, useEffect } from "react"
 import { Stack, Typography } from "@mui/material"
+import {
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "codeforlife/hooks/router"
 import { GitHub as GitHubIcon } from "@mui/icons-material"
 import { Image } from "codeforlife/components"
 import { LinkButton } from "codeforlife/components/router"
-import { useNavigate } from "codeforlife/hooks/router"
-import { useSearchParams } from "codeforlife/hooks/router"
 
 import CflLogoImage from "../../images/cfl_logo.png"
 import { LINK_GH_LOGIN } from "../../app/env"
@@ -14,17 +17,29 @@ import { paths } from "../../routes"
 import { useLoginMutation } from "../../api/session"
 import { useSessionMetadata } from "../../app/hooks"
 
+export interface HomeState {
+  code?: string
+}
+
 export interface HomeProps {}
 
 const Home: FC<HomeProps> = () => {
-  const [login] = useLoginMutation()
+  const [login, { isLoading, isError }] = useLoginMutation()
   const sessionMetadata = useSessionMetadata()
   const navigate = useNavigate()
-  const { code } = useSearchParams({ code: yup.string() }) || {}
+  const searchParams = useSearchParams({ code: yup.string() }) || {}
+  const { state } = useLocation<HomeState>()
+
+  const { code } = state || {}
 
   useEffect(() => {
     if (sessionMetadata) navigate(paths.agreementSignatures._)
-    else if (code) {
+    else if (searchParams.code) {
+      navigate<HomeState>(".", {
+        replace: true,
+        state: { code: searchParams.code },
+      })
+    } else if (code && !isLoading && !isError) {
       login({ code })
         .unwrap()
         .then(() => {
@@ -46,7 +61,15 @@ const Home: FC<HomeProps> = () => {
           })
         })
     }
-  }, [sessionMetadata, login, navigate, code])
+  }, [
+    sessionMetadata,
+    login,
+    navigate,
+    searchParams.code,
+    code,
+    isLoading,
+    isError,
+  ])
 
   return (
     <pages.Page>
