@@ -10,17 +10,25 @@ import { LINK_CFL } from "../app/env"
 import { useLogoutMutation } from "../api"
 import { useRetrieveContributorQuery } from "../api/contributor"
 
-const Profile: FC<SessionMetadata> = ({ contributor_id }) =>
-  handleResultState(
+const Profile: FC<SessionMetadata> = ({ contributor_id }) => {
+  const avatarSize = 50
+
+  return handleResultState(
     useRetrieveContributorQuery(contributor_id),
     contributor => (
       <LinkButton
         to={contributor.html_url}
         target="_blank"
-        startIcon={
-          <Avatar alt={contributor.name} src={contributor.avatar_url} />
+        endIcon={
+          <Avatar
+            alt={contributor.name}
+            src={contributor.avatar_url}
+            sx={{ width: avatarSize, height: avatarSize }}
+          />
         }
         sx={{
+          height: avatarSize + 5,
+          fontSize: 20,
           margin: "0 auto",
           backgroundColor: "transparent",
           "&:hover": { backgroundColor: "transparent" },
@@ -30,6 +38,7 @@ const Profile: FC<SessionMetadata> = ({ contributor_id }) =>
       </LinkButton>
     ),
   )
+}
 
 export interface HeaderProps {}
 
@@ -57,8 +66,7 @@ const Header: FC<HeaderProps> = () => {
           style={{ cursor: "pointer" }}
         />
         {sessionMetadata && (
-          <>
-            <Profile {...sessionMetadata} />
+          <Stack direction="row" gap={2} alignItems="center" marginLeft="auto">
             <Link
               onClick={() => {
                 void logout(null)
@@ -66,7 +74,8 @@ const Header: FC<HeaderProps> = () => {
             >
               Log out
             </Link>
-          </>
+            <Profile {...sessionMetadata} />
+          </Stack>
         )}
       </Stack>
     </Paper>
