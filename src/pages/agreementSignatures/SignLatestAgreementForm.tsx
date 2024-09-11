@@ -1,8 +1,8 @@
 import * as forms from "codeforlife/components/form"
+import { FormHelperText, Stack, Typography } from "@mui/material"
 import { type FC } from "react"
 import { Link } from "codeforlife/components/router"
 import { PriorityHigh as PriorityHighIcon } from "@mui/icons-material"
-import { Typography } from "@mui/material"
 import { submitForm } from "codeforlife/utils/form"
 
 import { type AgreementSignature } from "../../api/agreementSignature"
@@ -23,9 +23,14 @@ const SignLatestAgreementForm: FC<SignLatestAgreementFormProps> = ({
 
   return (
     <>
-      <Typography color="error.main">
+      <Typography color="error.main" variant="h5">
         You have not signed the latest agreement!
       </Typography>
+      <FormHelperText>
+        You cannot make any contributions until you agree to our latest terms.
+        <br />
+        (ID: {agreementId})
+      </FormHelperText>
       <forms.Form
         initialValues={{
           read_and_understood: false,
@@ -38,26 +43,32 @@ const SignLatestAgreementForm: FC<SignLatestAgreementFormProps> = ({
           clean: values => ({ ...values, signed_at: new Date() }),
         })}
       >
-        <forms.CheckboxField
-          name="read_and_understood"
-          required
-          formControlLabelProps={{
-            label: (
-              <>
-                I have read and understood the{" "}
-                <Link
-                  to={LINK_GH_CONTRIBUTING.replace("{commitId}", agreementId)}
-                >
-                  agreement
-                </Link>
-                .
-              </>
-            ),
-          }}
-        />
-        <forms.SubmitButton className="alert" startIcon={<PriorityHighIcon />}>
-          Sign agreement
-        </forms.SubmitButton>
+        <Stack direction={{ xs: "column", sm: "row" }} gap={2}>
+          <forms.CheckboxField
+            name="read_and_understood"
+            required
+            formControlLabelProps={{
+              label: (
+                <>
+                  I have read and understood the{" "}
+                  <Link
+                    to={LINK_GH_CONTRIBUTING.replace("{commitId}", agreementId)}
+                    target="_blank"
+                  >
+                    latest agreement
+                  </Link>
+                  .
+                </>
+              ),
+            }}
+          />
+          <forms.SubmitButton
+            className="alert"
+            startIcon={<PriorityHighIcon />}
+          >
+            Sign agreement
+          </forms.SubmitButton>
+        </Stack>
       </forms.Form>
     </>
   )
