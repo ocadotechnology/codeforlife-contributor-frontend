@@ -93,7 +93,7 @@ const agreementSignatureApi = api.injectEndpoints({
       CheckSignedLatestAgreementSignatureArg
     >({
       query: () => ({
-        url: agreementSignatureUrls.list + "check-signed-latest",
+        url: agreementSignatureUrls.list + "check-signed-latest/",
         method: "GET",
       }),
     }),
@@ -108,4 +108,5 @@ export const {
   useLazyListAgreementSignaturesQuery,
   useCreateAgreementSignatureMutation,
   useCheckSignedLatestAgreementSignatureQuery,
+  useLazyCheckSignedLatestAgreementSignatureQuery,
 } = agreementSignatureApi
