@@ -37,6 +37,7 @@ const Home: FC<HomeProps> = () => {
     else if (searchParams.code) {
       navigate<HomeState>(".", {
         replace: true,
+        next: false,
         state: { code: searchParams.code },
       })
     } else if (code && !isLoading && !isError) {
@@ -94,13 +95,12 @@ const Home: FC<HomeProps> = () => {
             to={LINK_GH_LOGIN}
             sx={({ spacing }) => ({
               marginTop: spacing(20),
-              borderRadius: spacing(1),
               padding: `${spacing(4)} ${spacing(5)}`,
-              fontSize: spacing(2.5),
+              fontSize: "1.2rem",
               background: "black",
               color: "white.main",
             })}
-            startIcon={<GitHubIcon />}
+            startIcon={<GitHubIcon sx={{ fontSize: "30px !important" }} />}
           >
             Log in with GitHub
           </LinkButton>
