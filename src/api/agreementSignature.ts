@@ -16,7 +16,6 @@ import api from "."
 export type AgreementSignature = Model<
   number,
   {
-    contributor: number
     agreement_id: string
     signed_at: Date
   }
@@ -29,23 +28,23 @@ const agreementSignatureUrls = modelUrls(
 
 export type RetrieveAgreementSignatureResult = RetrieveResult<
   AgreementSignature,
-  "contributor" | "agreement_id" | "signed_at"
+  "agreement_id" | "signed_at"
 >
 export type RetrieveAgreementSignatureArg = RetrieveArg<AgreementSignature>
 
 export type ListAgreementSignaturesResult = ListResult<
   AgreementSignature,
-  "contributor" | "agreement_id" | "signed_at"
+  "agreement_id" | "signed_at"
 >
 export type ListAgreementSignaturesArg = ListArg
 
 export type CreateAgreementSignatureResult = CreateResult<
   AgreementSignature,
-  "contributor" | "agreement_id" | "signed_at"
+  "agreement_id" | "signed_at"
 >
 export type CreateAgreementSignatureArg = CreateArg<
   AgreementSignature,
-  "contributor" | "agreement_id" | "signed_at"
+  "agreement_id" | "signed_at"
 >
 
 export type CheckSignedLatestAgreementSignatureResult = {

@@ -6,18 +6,17 @@ import { PriorityHigh as PriorityHighIcon } from "@mui/icons-material"
 import { submitForm } from "codeforlife/utils/form"
 
 import { type AgreementSignature } from "../../api/agreementSignature"
-import { type Contributor } from "../../api/contributor"
 import { LINK_GH_CONTRIBUTING } from "../../app/env"
 import { useCreateAgreementSignatureMutation } from "../../api/agreementSignature"
 
 export interface SignLatestAgreementFormProps {
-  contributor: Contributor["id"]
   agreementId: AgreementSignature["agreement_id"]
+  onSign: () => void
 }
 
 const SignLatestAgreementForm: FC<SignLatestAgreementFormProps> = ({
-  contributor,
   agreementId,
+  onSign,
 }) => {
   const [createAgreementSignature] = useCreateAgreementSignatureMutation()
 
@@ -34,13 +33,15 @@ const SignLatestAgreementForm: FC<SignLatestAgreementFormProps> = ({
       <forms.Form
         initialValues={{
           read_and_understood: false,
-          contributor,
           agreement_id: agreementId,
+          // Placeholder for when the agreement was signed at.
           signed_at: new Date(),
         }}
         onSubmit={submitForm(createAgreementSignature, {
           exclude: ["read_and_understood"],
+          // Set the actual date-time the agreement was signed at.
           clean: values => ({ ...values, signed_at: new Date() }),
+          then: onSign,
         })}
       >
         <Stack direction={{ xs: "column", sm: "row" }} gap={2}>
