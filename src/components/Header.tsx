@@ -60,10 +60,8 @@ const Header: FC<HeaderProps> = () => {
           src={CflLogoImage}
           alt="code for life logo"
           maxWidth={{ xs: "65px", lg: "80px" }}
-          onClick={() => {
-            window.open(LINK_CFL, "_blank")
-          }}
-          style={{ cursor: "pointer" }}
+          href={LINK_CFL}
+          hrefInNewTab
         />
         {sessionMetadata && (
           <Stack direction="row" gap={2} alignItems="center" marginLeft="auto">
