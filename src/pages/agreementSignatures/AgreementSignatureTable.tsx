@@ -46,7 +46,9 @@ const AgreementSignatureTable: FC<AgreementSignatureTableProps> = () => {
                     <TableRow key={agreementSignature.id}>
                       <TableCell>{agreementSignature.agreement_id}</TableCell>
                       <TableCell>
-                        {agreementSignature.signed_at.toLocaleString()}
+                        {new Date(
+                          agreementSignature.signed_at,
+                        ).toLocaleString()}
                       </TableCell>
                       <TableCell>
                         <Tooltip title="View agreement in new tab">
