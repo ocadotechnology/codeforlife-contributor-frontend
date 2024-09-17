@@ -51,7 +51,7 @@ const SignLatestAgreementForm: FC<SignLatestAgreementFormProps> = ({
             formControlLabelProps={{
               label: (
                 <>
-                  I have read and understood the{" "}
+                  I have read, understood and agreed to the terms of the{" "}
                   <Link
                     to={LINK_GH_CONTRIBUTING.replace("{commitId}", agreementId)}
                     target="_blank"
