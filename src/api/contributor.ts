@@ -14,12 +14,10 @@ import api from "."
 export type Contributor = Model<
   number,
   {
-    email: string
     name: string
     location?: string
     html_url: string
     avatar_url: string
-    last_login?: Date
   }
 >
 
@@ -27,13 +25,13 @@ const contributorUrls = modelUrls("contributors/", "contributors/<id>/")
 
 export type RetrieveContributorResult = RetrieveResult<
   Contributor,
-  "email" | "name" | "location" | "html_url" | "avatar_url" | "last_login"
+  "name" | "location" | "html_url" | "avatar_url"
 >
 export type RetrieveContributorArg = RetrieveArg<Contributor>
 
 export type ListContributorsResult = ListResult<
   Contributor,
-  "email" | "name" | "location" | "html_url" | "avatar_url" | "last_login"
+  "name" | "location" | "html_url" | "avatar_url"
 >
 export type ListContributorsArg = ListArg
 

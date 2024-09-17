@@ -1,13 +1,13 @@
 import { Route } from "react-router-dom"
 
-import AgreementSignatureList from "../pages/agreementSignatureList/AgreementSignatureList"
+import AgreementSignatures from "../pages/agreementSignatures/AgreementSignatures"
 import paths from "./paths"
 
 const agreementSignature = (
   <>
     <Route
       path={paths.agreementSignatures._}
-      element={<AgreementSignatureList />}
+      element={<AgreementSignatures />}
     />
   </>
 )

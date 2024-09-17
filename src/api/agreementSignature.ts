@@ -16,7 +16,6 @@ import api from "."
 export type AgreementSignature = Model<
   number,
   {
-    contributor: number
     agreement_id: string
     signed_at: Date
   }
@@ -29,29 +28,31 @@ const agreementSignatureUrls = modelUrls(
 
 export type RetrieveAgreementSignatureResult = RetrieveResult<
   AgreementSignature,
-  "contributor" | "agreement_id" | "signed_at"
+  "agreement_id" | "signed_at"
 >
 export type RetrieveAgreementSignatureArg = RetrieveArg<AgreementSignature>
 
 export type ListAgreementSignaturesResult = ListResult<
   AgreementSignature,
-  "contributor" | "agreement_id" | "signed_at"
+  "agreement_id" | "signed_at"
 >
 export type ListAgreementSignaturesArg = ListArg
 
 export type CreateAgreementSignatureResult = CreateResult<
   AgreementSignature,
-  "contributor" | "agreement_id" | "signed_at"
+  "agreement_id" | "signed_at"
 >
 export type CreateAgreementSignatureArg = CreateArg<
   AgreementSignature,
-  "contributor" | "agreement_id" | "signed_at"
+  "agreement_id" | "signed_at"
 >
 
-export type CheckSignedAgreementSignatureResult =
-  | { latest_commit_id: string; status: 404 | 451 }
-  | { status: 200 }
-export type CheckSignedAgreementSignatureArg = { contributor_pk: number }
+export type CheckSignedLatestAgreementSignatureResult = {
+  latest_commit_id: string
+  is_signed: boolean
+  reason: "" | "no_agreement_signatures" | "old_agreement_signatures"
+}
+export type CheckSignedLatestAgreementSignatureArg = null
 
 const agreementSignatureApi = api.injectEndpoints({
   endpoints: build => ({
@@ -86,17 +87,12 @@ const agreementSignatureApi = api.injectEndpoints({
       }),
       invalidatesTags: tagData("AgreementSignature", { includeListTag: true }),
     }),
-    checkSignedAgreementSignature: build.query<
-      CheckSignedAgreementSignatureResult,
-      CheckSignedAgreementSignatureArg
+    checkSignedLatestAgreementSignature: build.query<
+      CheckSignedLatestAgreementSignatureResult,
+      CheckSignedLatestAgreementSignatureArg
     >({
-      query: ({ contributor_pk }) => ({
-        url: buildUrl(
-          agreementSignatureUrls.list + `check-signed/${contributor_pk}`,
-          {
-            url: { contributor_pk },
-          },
-        ),
+      query: () => ({
+        url: agreementSignatureUrls.list + "check-signed-latest/",
         method: "GET",
       }),
     }),
@@ -110,5 +106,6 @@ export const {
   useListAgreementSignaturesQuery,
   useLazyListAgreementSignaturesQuery,
   useCreateAgreementSignatureMutation,
-  useCheckSignedAgreementSignatureQuery,
+  useCheckSignedLatestAgreementSignatureQuery,
+  useLazyCheckSignedLatestAgreementSignatureQuery,
 } = agreementSignatureApi

@@ -26,7 +26,7 @@
     "type-check": "tsc --build tsconfig.json"
   },
   "dependencies": {
-    "codeforlife": "github:ocadotechnology/codeforlife-package-javascript#v2.3.0"
+    "codeforlife": "github:ocadotechnology/codeforlife-package-javascript#v2.3.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
