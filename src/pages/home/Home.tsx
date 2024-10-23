@@ -75,12 +75,7 @@ const Home: FC<HomeProps> = () => {
   return (
     <pages.Page>
       <pages.Section>
-        <Stack
-          spacing={10}
-          direction="column"
-          textAlign="center"
-          alignItems="center"
-        >
+        <Stack direction="column" textAlign="center" alignItems="center">
           <Image
             src={CflLogoImage}
             alt="code for life logo"
@@ -88,19 +83,24 @@ const Home: FC<HomeProps> = () => {
             href={LINK_CFL}
             hrefInNewTab
           />
-          <Typography variant="h1">
+          <Typography my={10} variant="h1">
             Welcome to our Contributor Service!
           </Typography>
-          <Typography>
-            We are excited to have you join the CFL community. As a contributor,
-            you have the opportunity to share your knowledge, insights, and
-            unique perspectives with a passionate audience. Dive in, start
-            contributing, and help us make a difference.
+          <Typography variant="h6">
+            🎉 We&apos;re excited to have you join the CFL community. 🎉
           </Typography>
+          <Typography>
+            As a contributor, you have the opportunity to share your knowledge,
+            insights, and unique perspectives with a passionate audience. Dive
+            in, start contributing, and help us make a difference.
+          </Typography>
+          <Typography>
+            Log in with your GitHub account to start contributing.
+          </Typography>
+          <Typography fontSize="40px !important">👇</Typography>
           <LinkButton
             to={LINK_GH_LOGIN}
             sx={({ spacing }) => ({
-              marginTop: spacing(20),
               padding: `${spacing(4)} ${spacing(5)}`,
               fontSize: "1.2rem",
               background: "black",
