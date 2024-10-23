@@ -8,7 +8,7 @@ import { type ReactNode, useEffect } from "react"
 import { createSearchParams, useLocation, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import Cookies from "js-cookie"
-import { SESSION_METADATA_COOKIE_NAME } from "codeforlife/env"
+import { SESSION_METADATA_COOKIE_NAME } from "codeforlife/settings"
 import { selectIsLoggedIn } from "codeforlife/slices/session"
 
 import type { AppDispatch, RootState } from "./store"
