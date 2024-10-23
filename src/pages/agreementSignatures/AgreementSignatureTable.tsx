@@ -15,7 +15,7 @@ import { LinkIconButton } from "codeforlife/components/router"
 import { OpenInNew as OpenInNewIcon } from "@mui/icons-material"
 import { TablePagination } from "codeforlife/components"
 
-import { LINK_GH_CONTRIBUTING } from "../../app/env"
+import { LINK_GH_CONTRIBUTING } from "../../app/settings"
 import { useLazyListAgreementSignaturesQuery } from "../../api/agreementSignature"
 
 export interface AgreementSignatureTableProps {}

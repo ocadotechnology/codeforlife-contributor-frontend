@@ -6,7 +6,7 @@ import { PriorityHigh as PriorityHighIcon } from "@mui/icons-material"
 import { submitForm } from "codeforlife/utils/form"
 
 import { type AgreementSignature } from "../../api/agreementSignature"
-import { LINK_GH_CONTRIBUTING } from "../../app/env"
+import { LINK_GH_CONTRIBUTING } from "../../app/settings"
 import { useCreateAgreementSignatureMutation } from "../../api/agreementSignature"
 
 export interface SignLatestAgreementFormProps {
