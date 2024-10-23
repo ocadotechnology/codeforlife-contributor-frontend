@@ -2596,7 +2596,7 @@ clsx@^2.1.0, clsx@^2.1.1:
 
 "codeforlife@github:ocadotechnology/codeforlife-package-javascript#contributor-frontend-11":
   version "2.4.1"
-  resolved "https://codeload.github.com/ocadotechnology/codeforlife-package-javascript/tar.gz/baff529ec56e81ecf121eb6ea90d2327b0558f0c"
+  resolved "https://codeload.github.com/ocadotechnology/codeforlife-package-javascript/tar.gz/bb4f9cd9096929adf9ae40fa329ea8a7a1d14c37"
   dependencies:
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"
