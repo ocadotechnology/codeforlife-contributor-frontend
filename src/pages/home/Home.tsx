@@ -11,8 +11,8 @@ import { GitHub as GitHubIcon } from "@mui/icons-material"
 import { Image } from "codeforlife/components"
 import { LinkButton } from "codeforlife/components/router"
 
+import { LINK_CFL, LINK_GH_LOGIN } from "../../app/env"
 import CflLogoImage from "../../images/cfl_logo.png"
-import { LINK_GH_LOGIN } from "../../app/env"
 import { paths } from "../../routes"
 import { useLoginMutation } from "../../api/session"
 import { useSessionMetadata } from "../../app/hooks"
@@ -81,7 +81,13 @@ const Home: FC<HomeProps> = () => {
           textAlign="center"
           alignItems="center"
         >
-          <Image src={CflLogoImage} alt="code for life logo" maxWidth="200px" />
+          <Image
+            src={CflLogoImage}
+            alt="code for life logo"
+            maxWidth="200px"
+            href={LINK_CFL}
+            hrefInNewTab
+          />
           <Typography variant="h1">
             Welcome to our Contributor Service!
           </Typography>

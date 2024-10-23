@@ -1,19 +1,14 @@
+import { buildLoginEndpoint } from "codeforlife/api/endpoints"
+
 import { type SessionMetadata } from "../app/hooks"
+import api from "."
 
 export type LoginResult = SessionMetadata
 export type LoginArg = { code: string }
 
-import api from "."
-
 const sessionApi = api.injectEndpoints({
   endpoints: build => ({
-    login: build.mutation<LoginResult, LoginArg>({
-      query: body => ({
-        url: "session/login/",
-        method: "POST",
-        body,
-      }),
-    }),
+    login: buildLoginEndpoint<LoginResult, LoginArg>(build),
   }),
 })
 
