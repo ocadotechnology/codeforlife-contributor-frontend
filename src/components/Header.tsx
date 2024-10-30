@@ -6,7 +6,7 @@ import { handleResultState } from "codeforlife/utils/api"
 
 import { type SessionMetadata, useSessionMetadata } from "../app/hooks"
 import CflLogoImage from "../images/cfl_logo.png"
-import { LINK_CFL } from "../app/env"
+import { LINK_CFL } from "../app/settings"
 import { useLogoutMutation } from "../api"
 import { useRetrieveContributorQuery } from "../api/contributor"
 
