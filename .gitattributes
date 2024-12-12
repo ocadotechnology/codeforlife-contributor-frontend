@@ -1,0 +1,16 @@
+src export-ignore
+tsconfig.json export-ignore
+tsconfig.node.json export-ignore
+tsconfig.app.json export-ignore
+eslint.config export-ignore
+vite.config.ts export-ignore
+index.html export-ignore
+yarn.lock export-ignore
+**/.* export-ignore
+**/*.json export-ignore
+**/*.yaml export-ignore
+**/*.yml export-ignore
+**/*.toml export-ignore
+**/*.code-* export-ignore
+**/*.md export-ignore
+scripts export-ignore
