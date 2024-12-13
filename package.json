@@ -11,10 +11,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "start": "serve -s dist",
-    "build": "tsc --build tsconfig.json && vite build",
-    "preview": "vite preview",
+    "dev:server": "node server",
+    "dev:client": "vite",
+    "start": "NODE_ENV=production node server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:verbose": "vitest run --reporter=verbose --coverage.thresholds.lines=90 --coverage.thresholds.functions=90 --coverage.thresholds.branches=90 --coverage.thresholds.statements=90",
@@ -26,7 +28,7 @@
     "type-check": "tsc --build tsconfig.json"
   },
   "dependencies": {
-    "codeforlife": "github:ocadotechnology/codeforlife-package-javascript#v2.5.0"
+    "codeforlife": "github:ocadotechnology/codeforlife-package-javascript#v2.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -34,6 +36,7 @@
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.2",
+    "@types/express": "^5.0.0",
     "@types/jest": "^29.5.12",
     "@types/js-cookie": "^3.0.3",
     "@types/node": "^20.14.2",
