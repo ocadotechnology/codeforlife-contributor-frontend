@@ -5,7 +5,6 @@ tsconfig.app.json export-ignore
 eslint.config export-ignore
 vite.config.ts export-ignore
 index.html export-ignore
-yarn.lock export-ignore
 **/.* export-ignore
 **/*.json export-ignore
 **/*.yaml export-ignore

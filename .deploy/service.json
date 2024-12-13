@@ -1,0 +1,23 @@
+{
+  "type": "rolling",
+  "targetPlatform": "REPLACE_IN_PIPELINE",
+  "applicationData": {
+    "artifactUrl": "REPLACE_IN_PIPELINE",
+    "version": "REPLACE_IN_PIPELINE"
+  },
+  "runtime": {
+    "type": "REPLACE_IN_PIPELINE",
+    "pythonVersion": "REPLACE_IN_PIPELINE"
+  },
+  "profiles": [
+    { "name": "loadBalancer", "healthCheckPath": "/health-check/" },
+    { "name": "healthcheck", "interval": 30 },
+    {
+      "name": "environmentVariables",
+      "variables": {
+        "NODE_ENV": "REPLACE_IN_PIPELINE",
+        "MODE": "REPLACE_IN_PIPELINE"
+      }
+    }
+  ]
+}
