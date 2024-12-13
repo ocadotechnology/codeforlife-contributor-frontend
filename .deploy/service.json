@@ -7,7 +7,7 @@
   },
   "runtime": {
     "type": "REPLACE_IN_PIPELINE",
-    "pythonVersion": "REPLACE_IN_PIPELINE"
+    "nodejsVersion": "REPLACE_IN_PIPELINE"
   },
   "profiles": [
     { "name": "loadBalancer", "healthCheckPath": "REPLACE_IN_PIPELINE" },
