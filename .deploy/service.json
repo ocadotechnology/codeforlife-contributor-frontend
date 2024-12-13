@@ -17,8 +17,7 @@
       "variables": {
         "APP_ID": "REPLACE_IN_PIPELINE",
         "APP_VERSION": "REPLACE_IN_PIPELINE",
-        "NODE_ENV": "REPLACE_IN_PIPELINE",
-        "MODE": "REPLACE_IN_PIPELINE"
+        "NODE_ENV": "REPLACE_IN_PIPELINE"
       }
     }
   ]

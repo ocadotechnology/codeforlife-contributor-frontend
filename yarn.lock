@@ -2688,7 +2688,7 @@ clsx@^2.1.0, clsx@^2.1.1:
 
 "codeforlife@github:ocadotechnology/codeforlife-package-javascript#otp_deploy":
   version "2.5.1"
-  resolved "https://codeload.github.com/ocadotechnology/codeforlife-package-javascript/tar.gz/52602922bbd2fc449e9cbbc1807dad05f37bef0d"
+  resolved "https://codeload.github.com/ocadotechnology/codeforlife-package-javascript/tar.gz/713478f5395f3468d8977ac78e7d636ff3591175"
   dependencies:
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"
