@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.1...v1.0.2) (2024-12-17)
+
+
+### Bug Fixes
+
+* install cfl package from npm ([6849310](https://github.com/ocadotechnology/codeforlife-contributor-frontend/commit/68493108c118323a176d55c19c235b2051126578))
+
 ## [1.0.1](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.0...v1.0.1) (2024-12-16)
 
 
