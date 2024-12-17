@@ -28,7 +28,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    // TODO: investigate which of these are needed.
+    // TODO: investigate which of these are needed
     include: [
       "@mui/x-date-pickers",
       "@mui/x-date-pickers/AdapterDayjs",
