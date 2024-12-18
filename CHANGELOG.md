@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.7...v1.0.8) (2024-12-18)
+
+
+### Bug Fixes
+
+* test CSRF_HEADER_NAME ([aa96c09](https://github.com/ocadotechnology/codeforlife-contributor-frontend/commit/aa96c09549b816e03f7c868a117364e95a5dea41))
+
 ## [1.0.7](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.6...v1.0.7) (2024-12-18)
 
 
