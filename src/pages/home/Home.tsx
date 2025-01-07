@@ -23,6 +23,7 @@ export interface HomeState {
 
 export interface HomeProps {}
 
+// TODO: make leaderboard the home page.
 const Home: FC<HomeProps> = () => {
   const [login, { isLoading, isError }] = useLoginMutation()
   const sessionMetadata = useSessionMetadata()
