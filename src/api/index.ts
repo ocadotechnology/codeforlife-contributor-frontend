@@ -56,6 +56,7 @@ function createApi<TagTypes extends string = never>({
       }
 
       // Send the HTTP request and fetch the response.
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       return await fetch(args, api, extraOptions)
     },
     tagTypes: [...defaultTagTypes, ...tagTypes],
