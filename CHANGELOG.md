@@ -1,3 +1,11 @@
+## [1.0.12](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.11...v1.0.12) (2025-01-10)
+
+
+### Bug Fixes
+
+* lint error ([a16397b](https://github.com/ocadotechnology/codeforlife-contributor-frontend/commit/a16397b03cb2683ef41b9ea7cfe66a87068af205))
+* logs ([316db1c](https://github.com/ocadotechnology/codeforlife-contributor-frontend/commit/316db1c80187ad7ce305e34e491b6ce81821f160))
+
 ## [1.0.11](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.10...v1.0.11) (2025-01-07)
 
 
