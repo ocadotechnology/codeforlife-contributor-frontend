@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.12...v1.0.13) (2025-02-19)
+
+
+### Bug Fixes
+
+* use default create api ([7628d33](https://github.com/ocadotechnology/codeforlife-contributor-frontend/commit/7628d33b6f1d7b879e7f679da3f2d6090d5da2e6))
+
 ## [1.0.12](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.11...v1.0.12) (2025-01-10)
 
 
