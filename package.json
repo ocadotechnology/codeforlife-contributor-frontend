@@ -11,10 +11,24 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "cli": "../scripts/frontend/cli $@"
+    "dev:server": "node server",
+    "dev:client": "vite",
+    "start": "NODE_ENV=production node server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:verbose": "vitest run --reporter=verbose --coverage.thresholds.lines=90 --coverage.thresholds.functions=90 --coverage.thresholds.branches=90 --coverage.thresholds.statements=90",
+    "test:ui": "vitest --ui",
+    "format": "prettier --write .",
+    "format:check": "prettier --check --write=false .",
+    "lint": "eslint --max-warnings=0 .",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --build tsconfig.json"
   },
   "dependencies": {
-    "codeforlife": "2.6.11"
+    "codeforlife": "2.6.15"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -25,7 +39,7 @@
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.12",
     "@types/js-cookie": "^3.0.3",
-    "@types/node": "^20.14.2",
+    "@types/node": "^22.14.1",
     "@types/qs": "^6.9.7",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
