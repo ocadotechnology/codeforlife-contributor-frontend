@@ -11,10 +11,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "cli": "../scripts/frontend/cli $@"
+    "cli": "../scripts/frontend $@"
   },
   "dependencies": {
-    "codeforlife": "2.6.15"
+    "codeforlife": "2.6.16"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
