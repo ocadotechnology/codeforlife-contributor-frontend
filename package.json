@@ -14,7 +14,7 @@
     "cli": "../scripts/frontend $@"
   },
   "dependencies": {
-    "codeforlife": "2.6.16"
+    "codeforlife": "2.6.17"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
