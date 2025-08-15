@@ -1,77 +1,48 @@
 import * as pages from "codeforlife/components/page"
-import * as yup from "yup"
-import { type FC, useEffect } from "react"
-import { Stack, Typography } from "@mui/material"
-import {
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "codeforlife/hooks/router"
+import { CircularProgress, Stack, Typography } from "@mui/material"
+import { type FC, useCallback } from "react"
 import { GitHub as GitHubIcon } from "@mui/icons-material"
 import { Image } from "codeforlife/components"
 import { LinkButton } from "codeforlife/components/router"
+import { type OAuth2ReceiveCodeUrlSearchParams } from "codeforlife/utils/auth"
+import { useNavigate } from "codeforlife/hooks/router"
+import { useOAuth2 } from "codeforlife/hooks"
 
-import { LINK_CFL, LINK_GH_LOGIN } from "../../app/settings"
+import {
+  GH_AUTH_URI,
+  GH_CLIENT_ID,
+  GH_REDIRECT_URI,
+  GH_SCOPE,
+  LINK_CFL,
+} from "../../app/settings"
 import CflLogoImage from "../../images/cfl_logo.png"
 import { paths } from "../../routes"
 import { useLoginMutation } from "../../api/session"
 import { useSessionMetadata } from "../../app/hooks"
 
-export interface HomeState {
-  code?: string
-}
+export interface HomeState extends Partial<OAuth2ReceiveCodeUrlSearchParams> {}
 
 export interface HomeProps {}
 
 // TODO: make leaderboard the home page.
 const Home: FC<HomeProps> = () => {
-  const [login, { isLoading, isError }] = useLoginMutation()
-  const sessionMetadata = useSessionMetadata()
   const navigate = useNavigate()
-  const searchParams = useSearchParams({ code: yup.string() }) || {}
-  const { state } = useLocation<HomeState>()
-
-  const { code } = state || {}
-
-  useEffect(() => {
-    if (sessionMetadata) navigate(paths.agreementSignatures._)
-    else if (searchParams.code) {
-      navigate<HomeState>(".", {
-        replace: true,
-        next: false,
-        state: { code: searchParams.code },
-      })
-    } else if (code && !isLoading && !isError) {
-      login({ code })
-        .unwrap()
-        .then(() => {
-          navigate(paths.agreementSignatures._)
-        })
-        .catch(() => {
-          navigate(".", {
-            replace: true,
-            state: {
-              notifications: [
-                {
-                  props: {
-                    error: true,
-                    children: "Failed to login. Please try again.",
-                  },
-                },
-              ],
-            },
-          })
-        })
-    }
-  }, [
-    sessionMetadata,
-    login,
-    navigate,
-    searchParams.code,
-    code,
-    isLoading,
-    isError,
-  ])
+  const navigateToAgreementSignatures = useCallback(() => {
+    navigate(paths.agreementSignatures._)
+  }, [navigate])
+  const [githubOAuth2Link] = useOAuth2({
+    provider: "github",
+    authUri: GH_AUTH_URI,
+    clientId: GH_CLIENT_ID,
+    redirectUri: GH_REDIRECT_URI,
+    scope: GH_SCOPE,
+    responseType: "code",
+    accessType: "offline",
+    useLoginMutation,
+    useSessionMetadata,
+    onCreateSession: navigateToAgreementSignatures,
+    onRetrieveSession: navigateToAgreementSignatures,
+  })
 
   return (
     <pages.Page>
@@ -99,18 +70,22 @@ const Home: FC<HomeProps> = () => {
             Log in with your GitHub account to start contributing.
           </Typography>
           <Typography fontSize="40px !important">👇</Typography>
-          <LinkButton
-            to={LINK_GH_LOGIN}
-            sx={({ spacing }) => ({
-              padding: `${spacing(4)} ${spacing(5)}`,
-              fontSize: "1.2rem",
-              background: "black",
-              color: "white.main",
-            })}
-            startIcon={<GitHubIcon sx={{ fontSize: "30px !important" }} />}
-          >
-            Log in with GitHub
-          </LinkButton>
+          {githubOAuth2Link ? (
+            <LinkButton
+              to={githubOAuth2Link}
+              sx={({ spacing }) => ({
+                padding: `${spacing(4)} ${spacing(5)}`,
+                fontSize: "1.2rem",
+                background: "black",
+                color: "white.main",
+              })}
+              startIcon={<GitHubIcon sx={{ fontSize: "30px !important" }} />}
+            >
+              Log in with GitHub
+            </LinkButton>
+          ) : (
+            <CircularProgress />
+          )}
         </Stack>
       </pages.Section>
     </pages.Page>

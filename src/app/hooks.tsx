@@ -7,9 +7,7 @@
 import { type ReactNode, useEffect } from "react"
 import { createSearchParams, useLocation, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import Cookies from "js-cookie"
-import { SESSION_METADATA_COOKIE_NAME } from "codeforlife/settings"
-import { selectIsLoggedIn } from "codeforlife/slices/session"
+import { useSessionMetadata as _useSessionMetadata } from "codeforlife/hooks"
 
 import type { AppDispatch, RootState } from "./store"
 import { paths } from "../routes"
@@ -22,13 +20,8 @@ export interface SessionMetadata {
   contributor_id: number
 }
 
-export function useSessionMetadata(): SessionMetadata | undefined {
-  return useAppSelector(selectIsLoggedIn)
-    ? (JSON.parse(
-        Cookies.get(SESSION_METADATA_COOKIE_NAME)!,
-      ) as SessionMetadata)
-    : undefined
-}
+export const useSessionMetadata =
+  _useSessionMetadata.predefine<SessionMetadata>()
 
 export type UseSessionChildren =
   | ReactNode
