@@ -1,4 +1,4 @@
-import env from "codeforlife/settings"
+import vite from "codeforlife/settings"
 
 export * from "codeforlife/settings"
 
@@ -11,4 +11,4 @@ export const {
   GH_SCOPE,
   GH_CLIENT_ID,
   GH_REDIRECT_URI,
-} = env.vite
+} = vite
