@@ -1,12 +1,10 @@
-import * as pages from "codeforlife/components/page"
 import { CircularProgress, Stack, Typography } from "@mui/material"
 import { type FC, useCallback } from "react"
+import { Image, pages } from "codeforlife/components"
+import { useNavigate, useOAuth2 } from "codeforlife/hooks"
 import { GitHub as GitHubIcon } from "@mui/icons-material"
-import { Image } from "codeforlife/components"
 import { LinkButton } from "codeforlife/components/router"
 import { type OAuth2ReceiveCodeUrlSearchParams } from "codeforlife/utils/auth"
-import { useNavigate } from "codeforlife/hooks/router"
-import { useOAuth2 } from "codeforlife/hooks"
 
 import {
   GH_AUTH_URI,
