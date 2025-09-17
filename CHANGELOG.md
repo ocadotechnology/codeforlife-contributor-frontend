@@ -1,3 +1,10 @@
+## [1.0.20](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.19...v1.0.20) (2025-09-17)
+
+
+### Bug Fixes
+
+* Upgrade react ([#24](https://github.com/ocadotechnology/codeforlife-contributor-frontend/issues/24)) ([a8cf050](https://github.com/ocadotechnology/codeforlife-contributor-frontend/commit/a8cf050f172c11d174f80430fc5fd741cda53ea8))
+
 ## [1.0.19](https://github.com/ocadotechnology/codeforlife-contributor-frontend/compare/v1.0.18...v1.0.19) (2025-09-09)
 
 
