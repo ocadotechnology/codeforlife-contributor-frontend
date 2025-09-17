@@ -5,7 +5,7 @@
 // for importing and re-exporting the typed versions of hooks.
 /* eslint-disable @typescript-eslint/no-restricted-imports */
 import { type ReactNode, useEffect } from "react"
-import { createSearchParams, useLocation, useNavigate } from "react-router-dom"
+import { createSearchParams, useLocation, useNavigate } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
 import { useSessionMetadata as _useSessionMetadata } from "codeforlife/hooks"
 
@@ -41,7 +41,7 @@ export function useSession(
 
   useEffect(() => {
     if (!sessionMetadata) {
-      navigate({
+      void navigate({
         pathname: paths._,
         search: next
           ? createSearchParams({ next: pathname }).toString()
