@@ -1,7 +1,7 @@
 {
   "name": "contributor",
   "private": true,
-  "version": "1.0.21",
+  "version": "1.0.22",
   "type": "module",
   "scripts": {
     "scripts": ".workspace/frontend/scripts"
